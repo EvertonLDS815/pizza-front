@@ -17,17 +17,26 @@ export default function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   async function handleLogin(event: FormEvent) {
     event.preventDefault();
+
+    if (email === '' || password === '') {
+      alert("preencha os dados")
+      return
+    }
+
+    setLoading(true)
 
     let data = {
       email,
       password
     }
 
-    await signIn(data)
+    await signIn(data);
+
+    setLoading(false);
   }
   return (
     <>
@@ -51,7 +60,7 @@ export default function Home() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type="submit" loading={false} >Acessar</Button>
+            <Button type="submit" loading={loading} >Acessar</Button>
           </form>
 
           <Link href="/signup" legacyBehavior>
