@@ -1,9 +1,10 @@
+import styles from '../../styles/home.module.scss';
 
 export default function Home() {
   return (
     <>
-      <div>
-        <h1>Aprendendo Nextjs</h1>
+      <div className={styles.container}>
+        <h1>Sujeito Pizza :)</h1>
       </div>
     </>
   )
