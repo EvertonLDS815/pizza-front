@@ -7,7 +7,7 @@ import {useContext, FormEvent, useState} from 'react';
 import {Input} from '../components/ui/input';
 import { Button } from '@/components/ui/button';
 
-import {AuthContext} from '../context/authContext'
+import {AuthContext} from '../contexts/authContext'
 
 import Link from 'next/link'
 
