@@ -14,14 +14,16 @@ export default function Home() {
       </Head>
       <div className={styles.containerCenter}>
         <Image src={logoImg} alt="logo sujeito pizzaria" />
-      </div>
-      
-      <div className={styles.login}>
-        <form>
-          <Input type="text" placeholder="Digite seu email" />
-          <Input type="password" placeholder="Digite sua senha" />
-          <Button type="submit" loading={false} >Cadastrar</Button>
-        </form>
+        
+        <div className={styles.login}>
+          <form>
+            <Input type="text" placeholder="Digite seu email" />
+            <Input type="password" placeholder="Digite sua senha" />
+            <Button type="submit" loading={false} >Cadastrar</Button>
+          </form>
+
+          <a className={styles.text}>Não possui uma conta? Cadastre-se</a>
+        </div>
       </div>
     </>
   )
