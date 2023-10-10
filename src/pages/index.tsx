@@ -6,6 +6,8 @@ import logoImg from '../../public/logo.svg';
 import {Input} from '../components/ui/input';
 import { Button } from '@/components/ui/button';
 
+import Link from 'next/link'
+
 export default function Home() {
   return (
     <>
@@ -13,16 +15,18 @@ export default function Home() {
         <title>Sujeito Pizza - Faça seu login</title>
       </Head>
       <div className={styles.containerCenter}>
-        <Image src={logoImg} alt="logo sujeito pizzaria" />
+        <Image className={styles.logoImage} src={logoImg} alt="logo sujeito pizzaria" />
         
         <div className={styles.login}>
           <form>
             <Input type="text" placeholder="Digite seu email" />
             <Input type="password" placeholder="Digite sua senha" />
-            <Button type="submit" loading={false} >Cadastrar</Button>
+            <Button type="submit" loading={false} >Acessar</Button>
           </form>
 
-          <a className={styles.text}>Não possui uma conta? Cadastre-se</a>
+          <Link href="/signup" legacyBehavior>
+            <a className={styles.text}>Não possui uma conta? Cadastre-se</a>
+          </Link>
         </div>
       </div>
     </>
