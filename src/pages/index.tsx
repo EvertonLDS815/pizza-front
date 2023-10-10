@@ -1,10 +1,13 @@
-import styles from '../../styles/home.module.scss';
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <>
-      <div className={styles.container}>
-        <h1>Sujeito Pizza :)</h1>
+      <Head>
+        <title>Sujeito Pizza - Faça seu login</title>
+      </Head>
+      <div>
+        <h1>Sujeito Pizza</h1>
       </div>
     </>
   )
