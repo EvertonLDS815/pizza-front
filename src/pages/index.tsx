@@ -23,11 +23,11 @@ export default function Home() {
     event.preventDefault();
 
     if (email === '' || password === '') {
-      alert("preencha os dados")
-      return
+      alert("Preencha todos os dados!!");
+      return;
     }
 
-    setLoading(true)
+    setLoading(true);
 
     let data = {
       email,
