@@ -20,7 +20,7 @@
     padding: 0 1.5rem;
 
     form {
-        width: 90%;
+        width: 80%;
         display: flex;
         flex-direction: column;
         padding-top: 2rem;
@@ -47,9 +47,14 @@
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 430px) {
     .login {
         width: 95%;
+        padding: 0 1rem;
+
+        form {
+            width: 90%;
+        }
     }
     .logoImage {
         width: 250px;

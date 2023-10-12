@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import {AuthContext} from '../contexts/authContext'
 
 import Link from 'next/link'
+import { toast } from 'react-toastify';
 
 export default function Home() {
   const {signIn} = useContext(AuthContext);
@@ -23,7 +24,7 @@ export default function Home() {
     event.preventDefault();
 
     if (email === '' || password === '') {
-      alert("Preencha todos os dados!!");
+      toast.warning('Preencha seus dados!');
       return;
     }
 

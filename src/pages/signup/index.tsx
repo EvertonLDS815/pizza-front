@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../../../styles/home.module.scss';
 import logoImg from '../../../public/logo.svg';
+import {toast} from 'react-toastify';
 
 import {Input} from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
@@ -24,7 +25,7 @@ export default function SignUp() {
     event.preventDefault();
 
     if (name === '' || email === '' || password === '') {
-      alert("Preencha todos os campos!!")
+      toast.warning('Preencha todos os campos!');
       return;
     }
 
@@ -59,7 +60,7 @@ export default function SignUp() {
               onChange={(e) => setName(e.target.value)} 
             />
             <Input
-              type="text"
+              type="email"
               placeholder="Digite seu email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

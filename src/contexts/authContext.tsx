@@ -2,7 +2,9 @@ import {createContext, ReactNode, useState} from 'react';
 import {api} from '../services/apiClient';
 
 import {destroyCookie, setCookie, parseCookies} from 'nookies';
-import Router from 'next/router'
+import Router from 'next/router';
+
+import {toast} from 'react-toastify';
 type AuthContextData = {
     user?: UserProps;
     isAuthenticated: boolean;
@@ -34,10 +36,10 @@ export const AuthContext = createContext({} as AuthContextData)
 
 export function signOut() {
     try {
-        destroyCookie(undefined, '@nextauth.token')
-        Router.push('/')
+        destroyCookie(undefined, '@nextauth.token');
+        Router.push('/');
     } catch (err) {
-        console.log('Erro ao deslogar')
+        console.log('Erro ao deslogar');
     }
 }
 export function AuthProvider({children}: AuthProviderProps) {
@@ -49,7 +51,7 @@ export function AuthProvider({children}: AuthProviderProps) {
             const response = await api.post('/session', {
                 email,
                 password
-            })
+            });
 
             // console.log(response.data)
 
@@ -57,24 +59,26 @@ export function AuthProvider({children}: AuthProviderProps) {
             setCookie(undefined, '@nextauth.token', token, {
                 maxAge: 60 * 60 * 24 * 30, // expira em um mês
                 path: "/" // quais caminhos terão acesso ao cookie
-            })
+            });
 
             setUser({
                 id,
                 name,
                 email
-            })
+            });
 
             // passar as próximas requisições ao nosso token
 
             api.defaults.headers['Authorization'] = `Bearer ${token}`
 
             // Redirecionar o user para a /dashboard
+            toast.success('Logado com sucesso!');
 
-            Router.push('/dashboard')
+            Router.push('/dashboard');
             
         } catch(err) {
-            console.log(`Erro ao acessar ${err}`)
+            toast.error('Erro ao acessar!');
+            console.log(`Erro no ${err}`);
         }
     }
 
@@ -86,11 +90,12 @@ export function AuthProvider({children}: AuthProviderProps) {
                 password
             });
 
-            console.log("Cadastrado com sucesso!!!");
+            toast.success('Conta criada com sucesso!');
 
             Router.push('/');
         } catch (err) {
-            console.log(err);
+            toast.error('Erro ao cadastrar');
+            console.log('Erro: ', err);
         }
     }
 
