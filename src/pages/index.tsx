@@ -7,10 +7,13 @@ import {useContext, FormEvent, useState} from 'react';
 import {Input} from '../components/ui/input';
 import { Button } from '@/components/ui/button';
 
-import {AuthContext} from '../contexts/authContext'
+import {AuthContext} from '../contexts/authContext';
 
-import Link from 'next/link'
+import Link from 'next/link';
+import { GetServerSideProps} from 'next';
+
 import { toast } from 'react-toastify';
+import { canSSRGuest } from '@/utils/canSSRGuest';
 
 export default function Home() {
   const {signIn} = useContext(AuthContext);
@@ -72,3 +75,11 @@ export default function Home() {
     </>
   )
 }
+
+
+export const getServerSideProps = canSSRGuest(async (ctx) => {
+
+  return {
+    props: {}
+  }
+})
