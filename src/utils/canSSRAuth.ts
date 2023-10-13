@@ -5,7 +5,6 @@ import {
 } from 'next';
 
 import { parseCookies, destroyCookie } from 'nookies';
-import { AuthTokenError } from '../services/errors/AuthTokenError';
 
 // função para páginas só users logados terá acesso
 export function canSSRAuth<P extends { [key: string]: any }>(
@@ -30,6 +29,7 @@ export function canSSRAuth<P extends { [key: string]: any }>(
     try {
       return await fn(ctx);
     } catch (err) {
+      destroyCookie(ctx, '@nextauth.token');
       return {
         redirect: {
           destination: '/',
