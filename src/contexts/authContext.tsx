@@ -45,7 +45,7 @@ export function signOut() {
 export function AuthProvider({children}: AuthProviderProps) {
     const [user, setUser] = useState<UserProps>()
     const isAuthenticated = !!user;
-    
+
     useEffect(() => {
         // Tentar pegar algo na nookie
         const {'@nextauth.token': token} = parseCookies()
@@ -97,8 +97,9 @@ export function AuthProvider({children}: AuthProviderProps) {
 
             Router.push('/dashboard');
             
-        } catch(err: any) {
-            toast.error(err.response.data.error);
+        } catch(err) {
+            toast.error('Erro ao acessar!');
+            console.log(`Erro no ${err}`);
         }
     }
 
@@ -113,8 +114,9 @@ export function AuthProvider({children}: AuthProviderProps) {
             toast.success('Conta criada com sucesso!');
 
             Router.push('/');
-        } catch (err: any) {
-            toast.error(err.response.data.error);
+        } catch (err) {
+            toast.error('Erro ao cadastrar');
+            console.log('Erro: ', err);
         }
     }
 
