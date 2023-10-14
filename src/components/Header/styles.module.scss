@@ -1,0 +1,45 @@
+.headerContainer {
+    height: 80px;
+}
+
+.headerContent {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        cursor: pointer;
+    }
+}
+
+.menuNav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 18px;
+
+    span {
+        color: var(--white);
+        padding: 5px;
+        position: relative;
+
+        &:hover {
+            color: var(--red-900);
+        }
+    }
+
+    button {
+        margin-left: 1rem;
+        background: transparent;
+        border: 0;
+        transition: transform 0.3s;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}
