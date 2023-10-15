@@ -14,15 +14,16 @@ export default function category() {
         event.preventDefault();
 
         if (name === '') {
-            return
-        }
+            toast.warning('Digite uma Categoria!');
+            return;
+        };
 
         const apiClient = setupAPIClient();
         await apiClient.post('/category', {
             name: name
         });
 
-        toast.success('Categoria cadastrada com sucesso!')
+        toast.success('Categoria cadastrada com sucesso!');
         setName('');
     }
 
