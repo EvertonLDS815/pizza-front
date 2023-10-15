@@ -7,7 +7,7 @@ import { AuthContext } from '@/contexts/authContext';
 
 export function Header() {
 
-    const {signOut, user} = useContext(AuthContext);
+    const {signOut} = useContext(AuthContext);
 
     return (
         <header className={styles.headerContainer}>
@@ -18,7 +18,7 @@ export function Header() {
 
                 <nav className={styles.menuNav}>
                     <Link href="/category">
-                        <span>{user?.email}</span>
+                        <span>Categoria</span>
                     </Link>
                     <Link href="/product">
                         <span>Cardápio</span>
