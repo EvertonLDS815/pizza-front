@@ -5,6 +5,7 @@ import { FormEvent, useState } from "react";
 
 import {setupAPIClient} from '../../services/api';
 import { toast } from "react-toastify";
+import {canSSRAuth} from '../../utils/canSSRAuth';
 
 export default function category() {
 
@@ -54,3 +55,10 @@ export default function category() {
         </>
     )
 }
+
+export const getServerSideProps = canSSRAuth(async (ctx) => {
+
+    return {
+        props: {}
+    }
+})

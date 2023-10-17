@@ -10,7 +10,6 @@ import { Button } from '@/components/ui/button';
 import {AuthContext} from '../contexts/authContext';
 
 import Link from 'next/link';
-import { GetServerSideProps} from 'next';
 
 import { toast } from 'react-toastify';
 import { canSSRGuest } from '@/utils/canSSRGuest';
