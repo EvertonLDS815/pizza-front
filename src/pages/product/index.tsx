@@ -1,13 +1,27 @@
-import {ChangeEvent, useState} from 'react'
+import {ChangeEvent, useState, FormEvent} from 'react'
 import Head from 'next/head';
 import styles from './styles.module.scss';
 import { canSSRAuth } from '../../utils/canSSRAuth';
 import { Header } from '../../components/Header';
 import {FiUpload} from 'react-icons/fi';
+import {setupAPIClient} from '../../services/api';
 
-export default function Product() {
+type ItemProps = {
+  id: string;
+  name: string;
+}
+
+interface CategoryProps {
+  categoryList: ItemProps[];
+}
+export default function Product({categoryList}: CategoryProps) {
   const [avatarUrl, setAvatarUrl] = useState('');
   const [imageAvatar, setImageAvatar] = useState(null);
+
+  const [categories, setCategories] = useState(categoryList || [])
+  const [categorySelected, setCategorySelected] = useState()
+
+  console.log(categoryList);
 
   function handleFile(e: ChangeEvent<HTMLInputElement>) {
     if (!e.target.files) {
@@ -25,6 +39,10 @@ export default function Product() {
       setImageAvatar(image);
       setAvatarUrl(URL.createObjectURL(e.target.files[0]));
     }
+  }
+
+  function handleChangeCategory(event: any) {
+    setCategorySelected(event.target.value);
   }
   return (
     <>
@@ -56,9 +74,15 @@ export default function Product() {
                 />
               )}
             </label>
-            <select>
-              <option>Bebida</option>
-              <option>Pizza</option>
+            <select value={categorySelected} onChange={handleChangeCategory}>
+              {categories.map((item, index) => {
+
+                return (
+                  <option key={item.id} value={index}>
+                    {item.name}
+                  </option>
+                )
+              })}
             </select>
             <input
               type="text"
@@ -83,8 +107,14 @@ export default function Product() {
   );
 }
 
-export const getServerSideProps = canSSRAuth(async (ctx) => {
+export const getServerSideProps = canSSRAuth(async (ctx: any) => {
+  const apiClient = setupAPIClient(ctx);
+
+  const response = await apiClient.get('/category');
+
   return {
-    props: {},
+    props: {
+      categoryList: response.data
+    },
   };
 });
