@@ -41,6 +41,7 @@
         height: 60px;
         align-items: center;
         display: flex;
+        width: 100%;
     }
 }
 .tag {
@@ -49,4 +50,12 @@
     height: 60px;
     border-radius: 0.3rem 0 0 0.3rem;
     margin-right: 1rem;
+}
+.orderItem:hover{
+    background: #27273b;
+}
+
+.emptyList {
+    font-size: 1.2rem;
+    color: var(--gray-100);
 }
