@@ -44,7 +44,7 @@ export type OrderItemProps = {
 export default function Dashboard({orders}: HomeProps) {
     const [orderList, setOrderList] = useState(orders || []);
 
-    const [modaItem, setModalItem] = useState<OrderItemProps[]>();
+    const [modalItem, setModalItem] = useState<OrderItemProps[]>([]);
     const [modalVisible, setIsModalVisible] = useState(false);
 
     function handleCloseModal() {
@@ -97,7 +97,11 @@ export default function Dashboard({orders}: HomeProps) {
         </main>
 
         {modalVisible && (
-            <ModalOrder />
+            <ModalOrder 
+                isOpen={modalVisible}
+                onRequestClose={handleCloseModal}
+                order={modalItem}
+            />
         )}
         </>
     )
