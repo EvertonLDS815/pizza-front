@@ -23,23 +23,26 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   async function handleLogin(event: FormEvent) {
-    event.preventDefault();
+    try {
+      event.preventDefault();
 
     if (email === '' || password === '') {
-      toast.warning('Preencha seus dados!');
-      return;
+      throw new Error('Preencha todos os dados!');
     }
-
+    
     setLoading(true);
-
+    
     let data = {
       email,
       password
     }
-
+    
     await signIn(data);
-
+    
     setLoading(false);
+  } catch (err: any) {
+      toast.warning(err.message);
+    }
   }
   return (
     <>

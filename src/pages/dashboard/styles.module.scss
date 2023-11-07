@@ -7,6 +7,7 @@
 }
 .container h1 {
     color: var(--white);
+    font-size: 1.8rem;
 }
 
 .containerHeader {
@@ -51,11 +52,17 @@
     border-radius: 0.3rem 0 0 0.3rem;
     margin-right: 1rem;
 }
-.orderItem:hover{
+.orderItem:hover {
     background: #27273b;
 }
 
 .emptyList {
     font-size: 1.2rem;
     color: var(--gray-100);
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 0 6vw;
+    }
 }

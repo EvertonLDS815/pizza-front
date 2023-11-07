@@ -97,7 +97,7 @@ export default function Dashboard({orders}: HomeProps) {
             <div className={styles.containerHeader}>
                 <h1>Últimos pedidos</h1>
                 <button onClick={handleRefreshOrders}>
-                    <FiRefreshCcw size={25} color="#3fffa3" />
+                    <FiRefreshCcw size={23} color="#3fffa3" />
                 </button>
             </div>
 
