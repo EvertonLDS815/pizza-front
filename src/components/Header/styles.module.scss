@@ -44,3 +44,15 @@
         }
     }
 }
+
+@media (max-width: 500px) {
+    
+    .headerContent {
+        flex-direction: column;
+        gap: 15px;
+
+        img {
+            height: 40px;
+        }
+    }
+}
