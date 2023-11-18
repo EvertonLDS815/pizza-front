@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 
 import {AuthContext} from '../contexts/authContext';
 
-import Link from 'next/link';
+// import Link from 'next/link';
 
 import { toast } from 'react-toastify';
 import { canSSRGuest } from '@/utils/canSSRGuest';
@@ -69,9 +69,9 @@ export default function Home() {
             <Button type="submit" loading={loading} >Acessar</Button>
           </form>
 
-          <Link href="/signup" legacyBehavior>
+          {/* <Link href="/signup" legacyBehavior>
             <a className={styles.text}>Não possui uma conta? Cadastre-se</a>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </>
